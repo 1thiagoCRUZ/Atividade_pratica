@@ -1,0 +1,13 @@
+.nav-pills li a:hover {
+    background-color: rgb(110, 110, 136);
+}
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    overflow-x: hidden;
+}
+.custom-width {
+    max-width: 500px;
+}
