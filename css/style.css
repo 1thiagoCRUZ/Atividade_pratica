@@ -1,13 +1,191 @@
-.nav-pills li a:hover {
-    background-color: rgb(110, 110, 136);
-}
-*{
-    padding: 0;
+/* 1. Reset e Estilos Globais */
+* {
+    box-sizing: border-box;
     margin: 0;
+    padding: 0;
 }
-body{
-    overflow-x: hidden;
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8f9fa; /* Fundo cinza bem claro */
+    color: #212529;
+    line-height: 1.5;
+    font-size: 14px; /* Reduz a fonte base para um visual mais compacto */
 }
-.custom-width {
-    max-width: 500px;
+
+/* 2. Cabeçalho (Header) */
+.header {
+    background-color: #ffffff;
+    padding: 0.7rem 1.8rem; /* Padding reduzido */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #dee2e6;
 }
+
+.header-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* Gap reduzido */
+}
+
+.header-title h1 {
+    font-size: 1rem; /* Fonte do título reduzida */
+    font-weight: 500;
+}
+
+.icon-car {
+    color: #007bff; 
+}
+
+.header-button {
+    text-decoration: none;
+    background-color: transparent;
+    color: #343a40;
+    border: 1px solid #ced4da;
+    padding: 0.3rem 0.8rem; /* Padding do botão reduzido */
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 0.8rem; /* Fonte do botão reduzida */
+    transition: background-color 0.2s;
+}
+
+.header-button:hover {
+    background-color: #f1f3f5;
+}
+
+/* 3. Conteúdo Principal e Container do Formulário */
+main {
+    display: flex;
+    justify-content: center;
+    padding: 2rem 1rem;
+}
+
+.form-container {
+    background-color: #ffffff;
+    padding: 1.8rem; /* Padding do container reduzido */
+    border-radius: 8px; /* Bordas menos arredondadas */
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06); /* Sombra bem sutil */
+    width: 100%;
+    max-width: 600px; /* Largura máxima bem reduzida */
+    border: 1px solid #e9ecef;
+}
+
+.form-container h2 {
+    font-size: 1.15rem; /* Fonte do subtítulo reduzida */
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+}
+
+.form-container p {
+    color: #6c757d;
+    margin-bottom: 1.8rem; /* Espaçamento reduzido */
+    font-size: 0.85rem;
+}
+
+/* 4. Layout e Campos do Formulário */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem; /* Gap do grid reduzido */
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-field.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-field label {
+    font-weight: 500;
+    margin-bottom: 0.3rem; /* Espaçamento do label reduzido */
+    font-size: 0.75rem; /* Fonte do label bem reduzida */
+    color: #495057;
+    text-transform: uppercase; /* Deixa o label mais discreto */
+    letter-spacing: 0.5px;
+}
+
+.form-field input,
+.form-field select {
+    width: 100%;
+    padding: 0.55rem 0.7rem; /* Padding interno dos campos reduzido */
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 0.9rem; /* Fonte interna dos campos reduzida */
+    background-color: #ffffff;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-field input:focus,
+.form-field select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(253, 126, 20, 0.15);
+}
+
+.form-field .field-hint {
+    font-size: 0.75rem;
+    color: #6c757d;
+    margin-top: 0.3rem;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.6rem; /* Gap dos botões reduzido */
+    margin-top: 1.8rem;
+    border-top: 1px solid #e9ecef;
+    padding-top: 1rem;
+}
+
+.btn {
+    padding: 0.5rem 1rem; /* Padding dos botões reduzido */
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 0.85rem; /* Fonte dos botões reduzida */
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+img {
+    width: 15%;
+    background-color: #0069d9;
+    border-radius: 10%;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #ffffff;
+}
+.btn-primary:hover {
+    background-color: #0069d9;
+}
+
+.btn-secondary {
+    background-color: #ffffff;
+    color: #343a40;
+    border-color: #ced4da;
+}
+
+.btn-secondary:hover {
+    background-color: #f8f9fa;
+}
+
+/* 6. Responsividade */
+@media (max-width: 768px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+    main {
+        padding: 1.5rem 1rem;
+    }
+}
+

@@ -1,0 +1,245 @@
+/* 1. Reset e Estilos Globais */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8f9fa;
+    color: #212529;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* .action-buttons  {
+    border: none;
+    cursor: pointer;
+} */
+
+/* 2. Cabeçalho (Header) */
+.header {
+    background-color: #f8f9fa;
+    padding: 0.8rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.back-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #495057;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* Estilo Base para Botões */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    border: 1px solid transparent;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #ffffff;
+}
+.btn-primary:hover {
+    background-color: #0069d9;
+}
+
+
+/* 3. Conteúdo Principal */
+main {
+    padding: 1rem 2.5rem;
+    max-width: 1200px; /* Limita a largura máxima do conteúdo */
+    margin: 0 auto; /* Centraliza o conteúdo na página */
+}
+
+.list-header {
+    margin-bottom: 1.2rem; /* Reduzido */
+}
+
+.list-header h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+}
+
+/* 4. Container de Filtro */
+.filter-container {
+    background-color: #ffffff;
+    padding: 1.25rem;
+    border-radius: 12px;
+    border: 1px solid #e9ecef;
+    margin-bottom: 1.2rem; /* Reduzido */
+}
+
+.filter-form {
+    display: flex;
+    align-items: flex-end;
+    gap: 1rem;
+}
+
+.form-field {
+    flex-grow: 1;
+}
+
+.form-field label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+    font-size: 0.8rem;
+    color: #495057;
+}
+
+.form-field input {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+.form-field input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+}
+
+.filter-actions {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.btn-filter {
+    background-color: #007bff;
+    color: #ffffff;
+}
+.btn-clear {
+    background-color: #f1f3f5;
+    color: #495057;
+    border-color: #ced4da;
+}
+.btn-clear:hover {
+    background-color: #e9ecef;
+}
+
+/* 5. Tabela de Carros */
+.table-container {
+    background-color: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #e9ecef;
+    overflow-x: auto; 
+    
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    
+}
+
+th, td {
+    padding: 0.75rem 1rem; /* Reduzido */
+    text-align: left;
+    vertical-align: middle;
+    border-bottom: 1px solid #e9ecef;
+}
+
+thead th {
+    font-weight: 600;
+    font-size: 0.75rem; /* Reduzido */
+    color: #6c757d;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.car-info {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem; /* Reduzido */
+}
+
+.car-info img {
+    width: 40px; /* Reduzido */
+    height: 40px; /* Reduzido */
+    border-radius: 6px; /* Reduzido */
+    object-fit: cover;
+}
+
+.car-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.car-name {
+    font-weight: 600;
+}
+
+.car-chassi {
+    font-size: 0.8rem;
+    color: #6c757d;
+}
+
+.placa-tag {
+    background-color: #e9ecef;
+    color: #495057;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 0.8rem;
+}
+
+.actions-menu {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.no-results {
+    text-align: center;
+    padding: 2rem;
+    color: #6c757d;
+}
+
+/* 6. Rodapé da Tabela */
+.table-footer {
+    padding: 1rem 0;
+    color: #6c757d;
+    font-size: 0.875rem;
+}
+
+/* 7. Responsividade */
+@media (max-width: 992px) {
+    .header, main {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+    .filter-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .filter-actions {
+        justify-content: flex-start;
+    }
+}
+
+

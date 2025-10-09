@@ -1,15 +1,16 @@
 <?php
 /**  Dependências do Banco de Dados*/
-require_once ("conectarBD.php");
+require_once ("./config/conectarBD.php");
 
-//Atribuindo valores as váriaveis pelo metodo get
-$nomeCarro = $_GET['nome'];
-$placaCarro = $_GET['placa'];
-$chassiCarro = $_GET['chassi'];
-$valorSelect = $_GET['select'];
+//Atribuindo valores as váriaveis pelo metodo post
+$nomeCarro = $_POST['nome'];
+$placaCarro = $_POST['placa'];
+$chassiCarro = $_POST['chassi'];
+$valorSelect = $_POST['montadora'];
+$img_url = $_POST['imagem_url'];
 
 //Inserindo dados na tabela de automoveis os ? são os marcadores de posição
-    $sql = "INSERT INTO automoveis(nome, placa, chassi, montadora) VALUES (?, ?, ?, ?);";
+    $sql = "INSERT INTO automoveis(nome, placa, chassi, montadora, imagem_url) VALUES (?, ?, ?, ?, ?);";
     try {
         $stmt = $con->prepare($sql);
 
@@ -18,6 +19,7 @@ $valorSelect = $_GET['select'];
         $stmt->bindParam(2, $placaCarro);
         $stmt->bindParam(3, $chassiCarro);
         $stmt->bindParam(4, $valorSelect);
+        $stmt->bindParam(5, $img_url);
 
         $stmt->execute();
 
@@ -25,7 +27,7 @@ $valorSelect = $_GET['select'];
         header('Location: index.php');
 
     } catch (PDOException $e) {
-        echo "Cadastro de automóvel não realizado! Erro: ". $e->getMessage();;
+        echo "Cadastro de automóvel não realizado! Erro: ". $e->getMessage();
     }
 
 

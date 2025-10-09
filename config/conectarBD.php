@@ -6,7 +6,7 @@ require_once("config.php");
 //abrindo a conexão com o banco de dados
 try {
     $con = new PDO(
-        DNS . ':host=' . DB_SERVER . '; dbname=' . DB_NAME,
+        DSN . ':host=' . DB_SERVER . '; dbname=' . DB_NAME,
         DB_USERNAME,
         DB_PASSWORD
     );
