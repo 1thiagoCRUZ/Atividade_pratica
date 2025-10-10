@@ -40,6 +40,7 @@ CREATE TABLE automoveis (
   placa CHAR(7) NOT NULL,
   chassi VARCHAR(17) NOT NULL,
   montadora INT(11) NOT NULL,
+  imagem_url VARCHAR(255),
   PRIMARY KEY (codigo),
   KEY fk_montadora (montadora),
   CONSTRAINT fk_automovel_montadora FOREIGN KEY (montadora)
