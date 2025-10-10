@@ -1,15 +1,4 @@
 <?php
-require_once("./config/conectarBD.php");
-
-$carroID = $_GET['codigo'];
-
-$sql = "SELECT * FROM automoveis WHERE codigo=:carroID;";
-
-$stmt = $con->prepare($sql);
-$stmt->bindParam(':carroID', $carroID);
-$stmt->execute();
-$carro = $stmt->fetch(PDO::FETCH_ASSOC);
-
 
 ?>
 
