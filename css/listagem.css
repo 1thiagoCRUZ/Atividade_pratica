@@ -68,12 +68,12 @@ body {
 /* 3. Conteúdo Principal */
 main {
     padding: 1rem 2.5rem;
-    max-width: 1200px; /* Limita a largura máxima do conteúdo */
-    margin: 0 auto; /* Centraliza o conteúdo na página */
+    max-width: 1200px; 
+    margin: 0 auto;
 }
 
 .list-header {
-    margin-bottom: 1.2rem; /* Reduzido */
+    margin-bottom: 1.2rem;
 }
 
 .list-header h1 {
@@ -220,7 +220,7 @@ tbody tr:last-child td {
     color: #6c757d;
 }
 
-/* 6. Rodapé da Tabela */
+
 .table-footer {
     padding: 1rem 0;
     color: #6c757d;

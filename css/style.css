@@ -63,23 +63,23 @@ main {
 
 .form-container {
     background-color: #ffffff;
-    padding: 1.8rem; /* Padding do container reduzido */
-    border-radius: 8px; /* Bordas menos arredondadas */
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06); /* Sombra bem sutil */
+    padding: 1.8rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
     width: 100%;
-    max-width: 600px; /* Largura máxima bem reduzida */
+    max-width: 600px;
     border: 1px solid #e9ecef;
 }
 
 .form-container h2 {
-    font-size: 1.15rem; /* Fonte do subtítulo reduzida */
+    font-size: 1.15rem;
     font-weight: 600;
     margin-bottom: 0.3rem;
 }
 
 .form-container p {
     color: #6c757d;
-    margin-bottom: 1.8rem; /* Espaçamento reduzido */
+    margin-bottom: 1.8rem;
     font-size: 0.85rem;
 }
 
@@ -87,7 +87,7 @@ main {
 .form-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1rem; /* Gap do grid reduzido */
+    gap: 1rem;
 }
 
 .form-field {
@@ -101,20 +101,20 @@ main {
 
 .form-field label {
     font-weight: 500;
-    margin-bottom: 0.3rem; /* Espaçamento do label reduzido */
-    font-size: 0.75rem; /* Fonte do label bem reduzida */
+    margin-bottom: 0.3rem;
+    font-size: 0.75rem;
     color: #495057;
-    text-transform: uppercase; /* Deixa o label mais discreto */
+    text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
 .form-field input,
 .form-field select {
     width: 100%;
-    padding: 0.55rem 0.7rem; /* Padding interno dos campos reduzido */
+    padding: 0.55rem 0.7rem;
     border: 1px solid #ced4da;
     border-radius: 5px;
-    font-size: 0.9rem; /* Fonte interna dos campos reduzida */
+    font-size: 0.9rem;
     background-color: #ffffff;
     transition: border-color 0.2s, box-shadow 0.2s;
 }
@@ -135,17 +135,17 @@ main {
 .form-actions {
     display: flex;
     justify-content: flex-end;
-    gap: 0.6rem; /* Gap dos botões reduzido */
+    gap: 0.6rem;
     margin-top: 1.8rem;
     border-top: 1px solid #e9ecef;
     padding-top: 1rem;
 }
 
 .btn {
-    padding: 0.5rem 1rem; /* Padding dos botões reduzido */
+    padding: 0.5rem 1rem; 
     border-radius: 5px;
     font-weight: 500;
-    font-size: 0.85rem; /* Fonte dos botões reduzida */
+    font-size: 0.85rem; 
     border: 1px solid transparent;
     cursor: pointer;
     transition: background-color 0.2s, transform 0.1s;
