@@ -1,5 +1,32 @@
 <?php
+require_once("./config/conectarBD.php");
 
+// 2. Lógica de busca/filtro
+$searchTerm = isset($_GET['nome_carro']) ? trim($_GET['nome_carro']) : '';
+$sql = "SELECT a.codigo, a.nome, a.placa, a.chassi, m.nome as montadora, a.imagem_url 
+        FROM automoveis a 
+        INNER JOIN montadoras m ON a.montadora = m.codigo";
+
+if (!empty($searchTerm)) {
+    $sql .= " WHERE a.nome LIKE :searchTerm";
+}
+
+$sql .= " ORDER BY a.codigo ASC";
+
+try {
+    $stmt = $con->prepare($sql);
+
+    if (!empty($searchTerm)) {
+        $stmt->bindValue(':searchTerm', '%' . $searchTerm . '%');
+    }
+
+    $stmt->execute();
+    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $totalCarros = count($results);
+
+} catch (PDOException $e) {
+    die("Erro ao consultar o banco de dados: " . $e->getMessage());
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
