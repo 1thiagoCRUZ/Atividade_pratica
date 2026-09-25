@@ -187,46 +187,77 @@ echo '<input type="text" name="nome" value="' . htmlspecialchars($automovel['nom
 Este arquivo recebe os dados do formulário de edição e atualiza no banco de dados.
 
 O que ele faz:
-- Recebe os dados via POST, incluindo o ID do automóvel
-- Prepara uma instrução SQL UPDATE com placeholders
-- Vincula os valores recebidos aos placeholders
+- Recebe os dados via POST, incluindo o ID do automóvel (que vem de um campo `hidden` do formulário de edição)
+- Se a URL da imagem vier vazia, grava `NULL` no banco (o carro fica sem foto e a lista usa a imagem padrão)
+- Prepara uma instrução SQL UPDATE com placeholders nomeados (`:nome`, `:id`...)
+- Vincula os valores recebidos aos placeholders com `bindParam`
 - Executa a query para atualizar os dados
-- Redireciona para a listagem após a atualização
+- Redireciona para a listagem após a atualização e encerra o script com `exit`
+- Se der erro, mostra a mensagem passando por `htmlspecialchars()`
+
+> **Atenção ao WHERE:** sem o `WHERE codigo = :id`, o UPDATE alteraria **todos** os carros da tabela.
 
 Trecho importante:
 ```php
 // Recebe os dados do formulário
-$id = $_POST['id'];
-$nome = $_POST['nome'];
+$id         = $_POST['id'];
+$nome       = $_POST['nome'];
+$imagem_url = $_POST['imagem_url'];
 // ... outros campos
 
+// Imagem é opcional: se veio vazia, guarda NULL no banco
+if ($imagem_url === '') {
+    $imagem_url = null;
+}
+
 // Prepara e executa a query de atualização
-$stmt = $con->prepare("UPDATE automoveis SET nome = ?, chassi = ?, placa = ?, montadora_id = ?, url_imagem = ? WHERE id = ?");
-$stmt->bindParam(1, $nome);
+$sql = 'UPDATE automoveis
+        SET nome = :nome, montadora = :montadora, chassi = :chassi, placa = :placa, imagem_url = :imagem_url
+        WHERE codigo = :id';
+
+$stmt = $con->prepare($sql);
+$stmt->bindParam(':nome', $nome);
 // ... outros campos
-$stmt->bindParam(6, $id);
+$stmt->bindParam(':id', $id);
 $stmt->execute();
+
+header('Location: listaautomoveis.php');
+exit;
 ```
 
 #### 📂 delete.php
 Este arquivo exclui um automóvel do banco de dados.
 
 O que ele faz:
-- Recebe o ID do automóvel via GET
-- Prepara uma instrução SQL DELETE com placeholder
+- Recebe o ID do automóvel via **POST** (não mais via GET pela URL)
+- Prepara uma instrução SQL DELETE com placeholder nomeado (`:id`)
 - Vincula o ID recebido ao placeholder
 - Executa a query para excluir o registro
-- Redireciona para a listagem após a exclusão
+- Redireciona para a listagem após a exclusão e encerra o script com `exit`
+
+Por que POST e não um link? Apagar **muda dados**, então não deve ser feito por um link (GET): um link pode ser aberto sem querer, salvo no histórico ou acessado por robôs. Por isso, na `listaautomoveis.php` o botão **Remover** é um pequeno formulário com o ID num campo `hidden`, e ainda pede confirmação antes de enviar:
+
+```html
+<form action="delete.php" method="post" onsubmit="return confirm('Remover este carro?');">
+    <input type="hidden" name="id" value="<?= (int) $carro['codigo'] ?>">
+    <button type="submit" class="btn-perigo">Remover</button>
+</form>
+```
+
+> **Atenção ao WHERE:** sem o `WHERE codigo = :id`, o DELETE apagaria **todos** os carros da tabela.
 
 Trecho importante:
 ```php
-// Recebe o ID do automóvel a ser excluído
-$id = $_GET['id'];
+// O id vem de um formulário POST (campo hidden), não de um link
+$id = $_POST['id'];
 
 // Prepara e executa a query de exclusão
-$stmt = $con->prepare("DELETE FROM automoveis WHERE id = ?");
-$stmt->bindParam(1, $id);
+$stmt = $con->prepare('DELETE FROM automoveis WHERE codigo = :id');
+$stmt->bindParam(':id', $id);
 $stmt->execute();
+
+header('Location: listaautomoveis.php');
+exit;
 ```
 
 ## 💡 Conceitos Importantes

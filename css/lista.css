@@ -1,0 +1,91 @@
+/* Estilos extras da lista de carros (complementam o style.css) */
+.lista-container {
+    max-width: 1100px;
+    margin: 24px auto;
+    padding: 0 16px;
+}
+
+.lista-container h2 {
+    margin-bottom: 16px;
+}
+
+.busca {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.busca input[type="text"] {
+    flex: 1;
+    min-width: 220px;
+    padding: 10px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font: inherit;
+}
+
+.tabela {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .12);
+}
+
+.tabela th,
+.tabela td {
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+    vertical-align: middle;
+}
+
+.tabela th {
+    background: #f3f4f6;
+    font-weight: 600;
+}
+
+.tabela .foto {
+    width: 72px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 6px;
+    background: #f3f4f6;
+}
+
+.acoes {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.acoes form {
+    margin: 0;
+}
+
+.btn-perigo {
+    background: #dc2626;
+    color: #fff;
+    border: 0;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font: inherit;
+    cursor: pointer;
+}
+
+.btn-perigo:hover {
+    background: #b91c1c;
+}
+
+.vazio {
+    padding: 24px 0;
+    color: #6b7280;
+}
+
+/* Botões que são links (Editar, Limpar, Cancelar) */
+a.btn {
+    display: inline-block;
+    text-decoration: none;
+}

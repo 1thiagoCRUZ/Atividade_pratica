@@ -1,3 +1,10 @@
+<?php
+require_once './config/conectarBD.php';
+
+// Busca as montadoras para preencher o <select>
+$stmt = $con->query('SELECT codigo, nome FROM montadoras ORDER BY nome ASC');
+$montadoras = $stmt->fetchAll();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -36,27 +43,9 @@
                         <label for="montadora">Montadora *</label>
                         <select id="montadora" name="montadora" required>
                             <option value="" disabled selected>Selecione a montadora</option>
-                             <?php
-                                require_once("./config/conectarBD.php");
-
-                                try {
-                                    $sql = "SELECT codigo, nome FROM montadoras ORDER BY nome ASC";
-                                    
-                                    $stmt = $con->query($sql);
-                                    
-                                    if ($stmt->rowCount() > 0) {
-                                        while($linha = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                                            echo "<option value='" . $linha["codigo"] . "'>" . htmlspecialchars($linha["nome"]) . "</option>";
-                                        }
-                                    } else {
-                                        echo "<option disabled>Nenhuma montadora cadastrada</option>";
-                                    }
-                                } catch (PDOException $e) {
-                                    echo "<option disabled>Erro ao carregar montadoras.</option>";
-                                } finally {
-                                    $con = null;
-                                }
-                            ?>
+                            <?php foreach ($montadoras as $m) { ?>
+                                <option value="<?= (int) $m['codigo'] ?>"><?= htmlspecialchars($m['nome']) ?></option>
+                            <?php } ?>
                         </select>
                     </div>
 
@@ -69,7 +58,7 @@
                         <label for="placa">Placa *</label>
                         <input type="text" id="placa" name="placa" placeholder="Ex: ABC-1234" required minlength="7" maxlength="8">
                     </div>
-                    
+
                     <div class="form-field full-width">
                         <label for="imagem_url">URL da Imagem</label>
                         <input type="url" id="imagem_url" name="imagem_url" placeholder="https://exemplo.com/imagem-do-carro.jpg">
